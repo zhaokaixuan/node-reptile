@@ -1,0 +1,27 @@
+{
+  "name": "node-reptile",
+  "version": "1.0.0",
+  "description": "用node.js写的一个爬虫",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhaokaixuan/node-reptile.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhaokaixuan/node-reptile/issues"
+  },
+  "homepage": "https://github.com/zhaokaixuan/node-reptile#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "http": "^0.0.0",
+    "iconv-lite": "^0.4.24",
+    "phantom": "^6.0.3",
+    "request": "^2.88.0"
+  }
+}
