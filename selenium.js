@@ -11,12 +11,17 @@ async function start() {
     await driver.sleep(2000);
     driver.getPageSource().then((val) => {
         const $ = cheerio.load(val);
-        let result = $('#u1').text()
-        console.log(result)
+        var titles = [];
+        $('.gl-warp li').each(function (idx, element) {
+            titles.push($(element).attr('data-sku'))
+        })
+        console.log(titles)
         console.log(`li的长度：${$('.gl-warp li').length}`)
-        fs.writeFile('./mes.txt', result, (err) => {
+        fs.writeFile('./sku.json', JSON.stringify(titles), (err) => {
             if (err) throw err
             console.log('is saved')
+            driver.close();
+
         })//将数据写进mes.txt文件中
     })
 }
