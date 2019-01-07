@@ -24,6 +24,7 @@
     "http": "^0.0.0",
     "iconv-lite": "^0.4.24",
     "phantom": "^6.0.3",
+    "phantomjs": "^2.1.7+deprecated",
     "request": "^2.88.0",
     "selenium-webdriver": "^4.0.0-alpha.1"
   }

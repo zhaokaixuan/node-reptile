@@ -2,7 +2,6 @@ require('chromedriver'); //chrome浏览器驱动
 let webdriver = require('selenium-webdriver'); //浏览器自动操作
 let cheerio = require('cheerio'); //获取页面数据
 let fs = require('fs');
-let async = require('async');
 let driver = new webdriver.Builder().forBrowser('chrome').build()
 var rootUrl = 'https://item.jd.com/';
 var skuArr = JSON.parse(fs.readFileSync('sku.json').toString());
