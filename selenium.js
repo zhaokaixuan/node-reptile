@@ -20,7 +20,7 @@ async function start() {
         fs.writeFile('./sku.json', JSON.stringify(titles), (err) => {
             if (err) throw err
             console.log('is saved')
-            driver.close();
+           // driver.close();
 
         })//将数据写进mes.txt文件中
     })
