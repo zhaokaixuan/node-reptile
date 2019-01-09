@@ -23,6 +23,7 @@
     "chromedriver": "^2.45.0",
     "http": "^0.0.0",
     "iconv-lite": "^0.4.24",
+    "mysql": "^2.16.0",
     "phantom": "^6.0.3",
     "phantomjs": "^2.1.7+deprecated",
     "request": "^2.88.0",

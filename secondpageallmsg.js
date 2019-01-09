@@ -27,7 +27,7 @@ async function start(sku) {
                     var str = JSON.stringify(result) + ']';
                 }
             }
-            fs.appendFile('./secondpageallmsg1.json', str, (err) => {
+            fs.appendFile('./secondpageallmsg2.json', str, (err) => {
                 if (page < 6000) {
                     page++;
                     start(urlArr[page-1]);
