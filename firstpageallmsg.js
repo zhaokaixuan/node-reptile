@@ -2,7 +2,7 @@ require('chromedriver'); //chrome浏览器驱动
 let webdriver = require('selenium-webdriver'); //浏览器自动操作
 let cheerio = require('cheerio'); //获取页面数据
 let fs = require('fs');
-
+var count = 1;
 let driver = new webdriver.Builder().forBrowser('chrome').build()
 var root = 'https://search.jd.com/Search?keyword=u%E7%9B%98&enc=utf-8&qrst=1&rt=1&stop=1&vt=2&suggest=1.def.0.V13&wq=upan&psort=3&s=61&click=0'
 async function start(page) {
@@ -15,25 +15,26 @@ async function start(page) {
         var result = data($)
         console.log(result)
         console.log(`li的长度：${result.length}`)
-        console.log(`页数:${page}`);
-        if (result.length < 60 && page != 100) {
+        if (result.length < 60 && page != 199) {
             start(page);
         } else {
             if (page == 1) {
                 var str = '[' + JSON.stringify(result) + ',';
             } else {
-                if (page < 100) {
+                if (page < 199) {
                     var str = JSON.stringify(result) + ',';
                 } else {
                     var str = JSON.stringify(result) + ']';
                 }
             }
-            fs.appendFile('./firstpageallmsg.json', str, (err) => {
+            fs.appendFile('./firstpageallmsg1.json', str, (err) => {
                 if (err) throw err
                 console.log('is saved')
-                if (page < 100) {
-                    page++;
+                if (page < 200) {
+                    page+=2;
+                    count++;
                     start(page);
+                    console.log(`开始第:${count}页`);
                 } else {
                     driver.close()
                     driver.quit()
@@ -79,3 +80,4 @@ function data($) {
 
 
 start(1)
+console.log(`开始第一页`)

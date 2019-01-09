@@ -5,7 +5,7 @@ let fs = require('fs');
 
 let driver = new webdriver.Builder().forBrowser('chrome').build()
 var page = 1;
-var skuArr = JSON.parse(fs.readFileSync('sku.json').toString());
+var skuArr = JSON.parse(fs.readFileSync('sku1.json').toString());
 var root = 'https://item.jd.com/'
 var urlArr = skuArr.reduce((acc,cur)=>acc.concat(cur));
 async function start(sku) {
@@ -27,7 +27,7 @@ async function start(sku) {
                     var str = JSON.stringify(result) + ']';
                 }
             }
-            fs.appendFile('./secondpageallmsg.json', str, (err) => {
+            fs.appendFile('./secondpageallmsg1.json', str, (err) => {
                 if (page < 6000) {
                     page++;
                     start(urlArr[page-1]);
