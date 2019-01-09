@@ -1,7 +1,7 @@
 var request = require('request');
 var fs = require('fs');
 var iconv = require('iconv-lite');
-var arr = JSON.parse(fs.readFileSync('sku1.json'));
+var arr = JSON.parse(fs.readFileSync('sku2.json'));
 var newArr = arr.map((item)=>{
     return item.join(',');
 })
@@ -21,7 +21,7 @@ newArr.map((item)=>{
             resultArr.push(obj);
             console.log(`数组长度：${resultArr.length}`)
             if(resultArr.length == 100){
-                fs.writeFile('./pingjia1.json',JSON.stringify(resultArr),function(err){
+                fs.writeFile('./pingjia2.json',JSON.stringify(resultArr),function(err){
                     if (err) throw err;
                     console.log('写入成功')
                 })
