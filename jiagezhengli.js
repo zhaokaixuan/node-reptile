@@ -1,18 +1,24 @@
 const fs = require('fs');
 
-var skuArr = JSON.parse(fs.readFileSync('sku2.json').toString());
+var skuArr = JSON.parse(fs.readFileSync('jiage2.json').toString());
 
 var newArr = skuArr.map((item,index)=>{
     var a = item.map((val,i)=>{
-        return [val,index*60+i]
+        let sku = val.id.replace('J_',''),
+            op = val.op,
+            m = val.m,
+            p = val.p;
+        return [sku,op,m,p]
     });
+    //console.log(a.length)
     return a;
 })
-console.log(newArr[0])
+//console.log(newArr.length)
+console.log(newArr)
 
 
 
-/* 
+
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
@@ -24,7 +30,7 @@ var con = mysql.createConnection({
 var count = 0;
 
 con.connect();
-var sql = "INSERT INTO sku (sku, sallSort) VALUES ?";
+var sql = "INSERT INTO jiage (sku, op,m,p) VALUES ?";
 function indata(count){
     con.query(sql,[newArr[count]],(err,res)=>{
         if(err){
@@ -44,7 +50,7 @@ function indata(count){
     })
 }
 indata(count);
- */
+
 
 
 

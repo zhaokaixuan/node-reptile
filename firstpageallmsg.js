@@ -29,13 +29,14 @@ async function start(page,s) {
                     var str = JSON.stringify(result) + ']';
                 }
             }
-            fs.appendFile('./firstpageallmsg2.json', str, (err) => {
+            fs.appendFile('./firstpageallmsg3.json', str, (err) => {
                 if (err) throw err
                 console.log('is saved')
                 if (page < 200) {
                     page+=2;
+                    s += 60;
                     count++;
-                    start(page);
+                    start(page,s);
                     console.log(`开始第:${count}页`);
                 } else {
                     driver.close()
@@ -58,12 +59,6 @@ function data($) {
         var $element = $(element);
         var arr = [];
         var obj = {};
-        $element.find('.p-icons').children('i').each(() => {
-            arr.push({
-                text: $(this).text(),
-                title: $(this).attr('data-tips')
-            })
-        })
         obj = {
             sku: $(element).attr('data-sku'),//sku
             detailPageUrl: $element.find('.p-img').children('a').attr('href'),//详情页链接
@@ -72,7 +67,6 @@ function data($) {
             judgeNum: $element.find('.p-commit').find('a').text(),//评价数
             shopName: $element.find('.p-shop').find('a').text(),//商店名称
             shopUrl: $element.find('.p-shop').find('a').attr('href'),//商店链接
-            icons: arr//优惠icons
         }
         resultArr.push(obj);
     })

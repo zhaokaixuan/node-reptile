@@ -1,14 +1,23 @@
 const fs = require('fs');
 
-var skuArr = JSON.parse(fs.readFileSync('sku2.json').toString());
-
+var skuArr = JSON.parse(fs.readFileSync('firstpageallmsg2.json').toString());
+console.log(`skuArr${skuArr}`)
 var newArr = skuArr.map((item,index)=>{
     var a = item.map((val,i)=>{
-        return [val,index*60+i]
+        let sku = val.sku,
+        detailPageUrl = val.detailPageUrl,
+        thumbnail = val.thumbnail,
+        price = val.price,
+        judgeNum = val.judgeNum,
+        shopName = val.shopName,
+        shopUrl = val.shopUrl;
+        return [sku,detailPageUrl,thumbnail,price,judgeNum,shopName,shopUrl]
     });
+    //console.log(a.length)
     return a;
 })
-console.log(newArr[0])
+//console.log(newArr.length)
+console.log(newArr)
 
 
 
@@ -24,7 +33,7 @@ var con = mysql.createConnection({
 var count = 0;
 
 con.connect();
-var sql = "INSERT INTO sku (sku, sallSort) VALUES ?";
+var sql = "INSERT INTO firstpageallmsg (sku, detailPageUrl,thumbnail,price,judgeNum,shopName,shopUrl) VALUES ?";
 function indata(count){
     con.query(sql,[newArr[count]],(err,res)=>{
         if(err){
@@ -44,8 +53,8 @@ function indata(count){
     })
 }
 indata(count);
- */
 
+ */
 
 
 
